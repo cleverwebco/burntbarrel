@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Burnt Barrel — Youngsville, NC</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EJVDWSQ2Z3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EJVDWSQ2Z3');
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ember: #D4510A;
+    --char: #1A1108;
+    --smoke: #2E251A;
+    --ash: #8A7A68;
+    --cream: #F2EBE0;
+    --gold: #C9943A;
+    --warm-white: #FAF5EE;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--char);
+    color: var(--cream);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ---- NOISE TEXTURE OVERLAY ---- */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.6;
+  }
+
+  /* ---- NAV ---- */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.4rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(26,17,8,0.95), transparent);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.2s, color 0.2s;
+  }
+
+  .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+  /* ---- HERO ---- */
+  .hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 0 2rem;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 60% 50% at 50% 80%, rgba(212,81,10,0.25) 0%, transparent 70%),
+      radial-gradient(ellipse 80% 60% at 30% 20%, rgba(201,148,58,0.08) 0%, transparent 60%),
+      linear-gradient(180deg, #0D0A06 0%, #1A1108 40%, #0D0803 100%);
+  }
+
+  /* Ember particles */
+  .embers {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .ember {
+    position: absolute;
+    bottom: -10px;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--ember);
+    animation: rise linear infinite;
+    box-shadow: 0 0 6px 2px rgba(212,81,10,0.6);
+  }
+
+  @keyframes rise {
+    0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+    10% { opacity: 1; }
+    80% { opacity: 0.6; }
+    100% { transform: translateY(-110vh) translateX(var(--drift)) scale(0.2); opacity: 0; }
+  }
+
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    position: relative;
+    animation: fadeUp 1s ease both 0.3s;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(4rem, 12vw, 10rem);
+    font-weight: 900;
+    line-height: 0.9;
+    color: var(--cream);
+    position: relative;
+    animation: fadeUp 1s ease both 0.5s;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--ember);
+    display: block;
+  }
+
+  .hero-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    letter-spacing: 0.1em;
+    color: var(--ash);
+    margin-top: 1.5rem;
+    position: relative;
+    animation: fadeUp 1s ease both 0.7s;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    margin-top: 3rem;
+    position: relative;
+    animation: fadeUp 1s ease both 0.9s;
+  }
+
+  .btn {
+    padding: 0.85rem 2.2rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: all 0.25s;
+  }
+
+  .btn-primary {
+    background: var(--ember);
+    color: var(--warm-white);
+  }
+  .btn-primary:hover { background: #b8430a; transform: translateY(-2px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid rgba(242,235,224,0.4);
+  }
+  .btn-outline:hover { border-color: var(--cream); transform: translateY(-2px); }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s ease infinite;
+    color: var(--ash);
+    font-size: 1.5rem;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---- DIVIDER ---- */
+  .rule {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 3rem;
+    margin: 0 auto;
+    max-width: 900px;
+  }
+  .rule::before, .rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(138,122,104,0.3);
+  }
+  .rule-icon { color: var(--gold); font-size: 1.2rem; }
+
+  /* ---- ABOUT ---- */
+  .about {
+    padding: 4.5rem 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .about-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    color: var(--cream);
+  }
+
+  .about-text h2 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .about-text p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--ash);
+    margin-bottom: 1.2rem;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-card {
+    background: var(--smoke);
+    border: 1px solid rgba(201,148,58,0.2);
+    padding: 3rem 2.5rem;
+    position: relative;
+  }
+
+  .about-card::before {
+    content: '';
+    position: absolute;
+    top: -6px; left: -6px;
+    right: 6px; bottom: 6px;
+    border: 1px solid rgba(212,81,10,0.3);
+    pointer-events: none;
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .stat {
+    border-left: 2px solid var(--ember);
+    padding-left: 1rem;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ash);
+    margin-top: 0.3rem;
+  }
+
+  /* ---- FEATURES ---- */
+  .features {
+    background: var(--smoke);
+    padding: 4.5rem 3rem;
+  }
+
+  .features-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--ember);
+    margin-bottom: 0.8rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 4rem;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid rgba(138,122,104,0.2);
+  }
+
+  .feature-item {
+    padding: 3rem 2.5rem;
+    border-right: 1px solid rgba(138,122,104,0.2);
+    transition: background 0.3s;
+    cursor: default;
+  }
+
+  .feature-item:last-child { border-right: none; }
+
+  .feature-item:hover { background: rgba(212,81,10,0.06); }
+
+  .feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .feature-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 0.75rem;
+  }
+
+  .feature-desc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--ash);
+  }
+
+  /* ---- EVENTS MARQUEE ---- */
+  .events-strip {
+    padding: 2rem 0;
+    background: var(--ember);
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .marquee-track {
+    display: inline-flex;
+    animation: marquee 30s linear infinite;
+  }
+
+  .marquee-item {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(242,235,224,0.85);
+    padding: 0 3rem;
+  }
+
+  .marquee-sep {
+    color: rgba(242,235,224,0.4);
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ---- EVENTS SECTION ---- */
+  .events {
+    padding: 4.5rem 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid rgba(138,122,104,0.25);
+  }
+
+  .event-row {
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    align-items: center;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(138,122,104,0.15);
+    gap: 2rem;
+    transition: background 0.2s;
+    cursor: default;
+  }
+
+  .event-row:hover { background: rgba(212,81,10,0.05); margin: 0 -1rem; padding-left: 1rem; padding-right: 1rem; }
+
+  .event-date {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--ember);
+    line-height: 1;
+  }
+
+  .event-month {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ash);
+    margin-top: 0.2rem;
+  }
+
+  .event-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-bottom: 0.3rem;
+  }
+
+  .event-type {
+    font-size: 0.85rem;
+    color: var(--ash);
+  }
+
+  .event-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    border: 1px solid rgba(212,81,10,0.5);
+    color: var(--ember);
+    white-space: nowrap;
+  }
+
+  /* ---- QUOTE BAND ---- */
+  .quote-band {
+    background: linear-gradient(135deg, #1A1108 0%, #2E1C0A 50%, #1A1108 100%);
+    padding: 5rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .quote-band::before {
+    content: '"';
+    position: absolute;
+    top: -2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 20rem;
+    color: rgba(212,81,10,0.06);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .quote-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-style: italic;
+    color: var(--cream);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.55;
+    position: relative;
+  }
+
+  .quote-attr {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 2rem;
+    position: relative;
+  }
+
+  /* ---- DRINKS ---- */
+  .drinks {
+    padding: 4.5rem 3rem;
+    background: var(--smoke);
+  }
+
+  .drinks-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .drinks-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .drink-card {
+    background: var(--char);
+    border: 1px solid rgba(138,122,104,0.15);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: default;
+  }
+
+  .drink-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+  }
+
+  .drink-emoji { font-size: 2.5rem; margin-bottom: 1rem; }
+
+  .drink-type {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+  }
+
+  .drink-desc {
+    font-size: 0.85rem;
+    color: var(--ash);
+    line-height: 1.6;
+  }
+
+  /* ---- VISIT / MAP ---- */
+  .visit {
+    padding: 4.5rem 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .visit-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    color: var(--cream);
+    margin-bottom: 2.5rem;
+    line-height: 1.2;
+  }
+
+  .info-block {
+    margin-bottom: 2.5rem;
+  }
+
+  .info-block-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ember);
+    margin-bottom: 0.5rem;
+  }
+
+  .info-block-value {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--cream);
+  }
+
+  .info-block-value a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  .hours-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.3rem 1.5rem;
+  }
+
+  .hours-day {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--cream);
+    font-size: 0.95rem;
+  }
+
+  .hours-time {
+    font-size: 0.95rem;
+    color: var(--ash);
+  }
+
+  .map-box {
+    background: var(--smoke);
+    border: 1px solid rgba(138,122,104,0.2);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .map-link-box {
+    display: block;
+    text-decoration: none;
+    position: relative;
+  }
+
+  .map-static {
+    height: 320px;
+    background: 
+      linear-gradient(135deg, #1A1108 0%, #2A1E0F 50%, #1A1108 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Grid lines for map feel */
+  .map-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(201,148,58,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,148,58,0.07) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .map-pin {
+    font-size: 3rem;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 0 12px rgba(212,81,10,0.7));
+    animation: pinPulse 2s ease infinite;
+  }
+
+  @keyframes pinPulse {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  .map-directions {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    position: relative;
+    z-index: 1;
+  }
+
+  .map-cta {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ember);
+    margin-top: 0.3rem;
+  }
+
+  .map-link-box:hover .map-static {
+    background: linear-gradient(135deg, #1A1108 0%, #331E08 50%, #1A1108 100%);
+  }
+
+  .map-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(26,17,8,0.95), transparent);
+    padding: 2rem 1.5rem 1.5rem;
+  }
+
+  .map-name {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--gold);
+  }
+
+  .map-addr {
+    font-size: 0.85rem;
+    color: var(--ash);
+    margin-top: 0.2rem;
+  }
+
+  /* ---- FOOTER ---- */
+  footer {
+    background: #0D0A06;
+    padding: 4rem 3rem 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(138,122,104,0.15);
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-style: italic;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+
+  .footer-tagline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ash);
+    margin-bottom: 2rem;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ash);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--cream); }
+
+  .footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .social-link {
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(138,122,104,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--ash);
+    font-size: 1.1rem;
+    transition: all 0.2s;
+  }
+
+  .social-link:hover {
+    border-color: var(--ember);
+    color: var(--ember);
+  }
+
+  .footer-copy {
+    font-size: 0.78rem;
+    color: rgba(138,122,104,0.5);
+    letter-spacing: 0.05em;
+  }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 900px) {
+    .about { grid-template-columns: 1fr; gap: 3rem; }
+    .feature-grid { grid-template-columns: 1fr; }
+    .feature-item { border-right: none; border-bottom: 1px solid rgba(138,122,104,0.2); }
+    .feature-item:last-child { border-bottom: none; }
+    .drinks-grid { grid-template-columns: 1fr 1fr; }
+    .visit { grid-template-columns: 1fr; gap: 3rem; }
+    .visit-info { text-align: center; }
+    .visit-info .hours-grid { justify-content: center; display: inline-grid; text-align: left; }
+    .info-block-label { text-align: center; }
+    .stat-grid { justify-items: center; }
+    nav { padding: 1.2rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    .about, .events, .drinks-inner, .visit { padding: 3rem 1.5rem; }
+    .features { padding: 4rem 1.5rem; }
+  }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .drinks-grid { grid-template-columns: 1fr; }
+    .hero-cta { flex-direction: column; }
+    .event-row { grid-template-columns: 80px 1fr; }
+    .event-tag { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Burnt Barrel</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#drinks">Drinks</a></li>
+    <li><a href="#visit">Visit</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="embers" id="embers"></div>
+  <p class="hero-eyebrow">Youngsville, North Carolina</p>
+  <h1 class="hero-title">
+    Burnt<em>Barrel</em>
+  </h1>
+  <p class="hero-sub">Craft Beer · Wine · Live Music · Good Times</p>
+  <div class="hero-cta">
+    <a href="#events" class="btn btn-primary">See Events</a>
+    <a href="#visit" class="btn btn-outline">Find Us</a>
+  </div>
+  <div class="hero-scroll">↓</div>
+</section>
+
+<!-- MARQUEE -->
+<div class="events-strip">
+  <div class="marquee-track">
+    <span class="marquee-item">Live Music <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Craft Beer <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Wine Bar <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Trivia Night <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Food Trucks <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Patio Seating <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Bottle Shop <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Rad Staff <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Best Barstools Anywhere <span class="marquee-sep">✦</span></span>
+    <!-- duplicate for seamless loop -->
+    <span class="marquee-item">Live Music <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Craft Beer <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Wine Bar <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Trivia Night <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Food Trucks <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Patio Seating <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Bottle Shop <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Rad Staff <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Best Barstools Anywhere <span class="marquee-sep">✦</span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-text">
+    <h2>A Maker of <em>Good Times</em></h2>
+    <p>Tucked into the heart of downtown Youngsville, Burnt Barrel is the kind of place you show up for one drink and stay for the whole evening. A cozy, hip beer bar with big heart — we're all about friends, music, and discovering your next favorite pour.</p>
+    <p>Whether you're pulling up a barstool with old friends, discovering a new craft beer, or catching a live set out on the patio, this is your home away from home on Main Street.</p>
+    <p>Outside food is always welcome — because great drinks deserve great company (and food trucks out front don't hurt either).</p>
+  </div>
+  <div class="about-visual">
+    <div class="about-card">
+      <div class="stat-grid">
+        <div class="stat">
+          <div class="stat-num">4.9</div>
+          <div class="stat-label">Google Rating</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">2K+</div>
+          <div class="stat-label">Followers</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">Fri–Sat</div>
+          <div class="stat-label">Live Music</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">135</div>
+          <div class="stat-label">W Main St, Youngsville</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DRINKS -->
+<section class="drinks" id="drinks">
+  <div class="drinks-inner">
+    <p class="section-label">What's Pouring</p>
+    <h2 class="section-title">The Good Stuff</h2>
+    <div class="drinks-grid">
+      <div class="drink-card">
+        <div class="drink-emoji">🍺</div>
+        <div class="drink-type">Draft Beer</div>
+        <p class="drink-desc">Rotating taps featuring local and regional craft breweries. Always something new on the line.</p>
+      </div>
+      <div class="drink-card">
+        <div class="drink-emoji">🍶</div>
+        <div class="drink-type">Craft Bottles & Cans</div>
+        <p class="drink-desc">An extensive fridge of premium craft beer — IPAs, sours, stouts, hazies and beyond.</p>
+      </div>
+      <div class="drink-card">
+        <div class="drink-emoji">🍷</div>
+        <div class="drink-type">Wine</div>
+        <p class="drink-desc">Thoughtfully selected wines by the glass or bottle. Red, white, rosé — something for everyone.</p>
+      </div>
+      <div class="drink-card">
+        <div class="drink-emoji">🍯</div>
+        <div class="drink-type">Mead & Specialty</div>
+        <p class="drink-desc">Meads and other specialty beverages available to enjoy here or take home from the bottle shop.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="events" id="events">
+  <p class="section-label">On the Calendar</p>
+  <h2 class="section-title">Upcoming Events</h2>
+  <div class="events-list">
+    <div class="event-row">
+      <div>
+        <div class="event-date">06</div>
+        <div class="event-month">Mar</div>
+      </div>
+      <div>
+        <div class="event-name">Music Bingo Night</div>
+        <div class="event-type">Thursday · Melty Food Truck</div>
+      </div>
+      <div class="event-tag">This Week</div>
+    </div>
+    <div class="event-row">
+      <div>
+        <div class="event-date">07</div>
+        <div class="event-month">Mar</div>
+      </div>
+      <div>
+        <div class="event-name">DJ Crash Karaoke</div>
+        <div class="event-type">Friday · Snacks on the Go Food Truck</div>
+      </div>
+      <div class="event-tag">This Week</div>
+    </div>
+    <div class="event-row">
+      <div>
+        <div class="event-date">08</div>
+        <div class="event-month">Mar</div>
+      </div>
+      <div>
+        <div class="event-name">$3 New Belgium Mountain Time Lager Cans</div>
+        <div class="event-type">Saturday Drink Special</div>
+      </div>
+      <div class="event-tag">This Week</div>
+    </div>
+    <div class="event-row">
+      <div>
+        <div class="event-date">09</div>
+        <div class="event-month">Mar</div>
+      </div>
+      <div>
+        <div class="event-name">Mimosa Flights with Will</div>
+        <div class="event-type">Sunday Brunch Vibes</div>
+      </div>
+      <div class="event-tag">This Week</div>
+    </div>
+    <div class="event-row">
+      <div>
+        <div class="event-date">29</div>
+        <div class="event-month">Mar</div>
+      </div>
+      <div>
+        <div class="event-name">The John Ford Blues Society</div>
+        <div class="event-type">Live Music</div>
+      </div>
+      <div class="event-tag">Concert</div>
+    </div>
+    <div class="event-row">
+      <div>
+        <div class="event-date">10</div>
+        <div class="event-month">Apr</div>
+      </div>
+      <div>
+        <div class="event-name">Michael Blakey</div>
+        <div class="event-type">Live Music</div>
+      </div>
+      <div class="event-tag">Concert</div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-band">
+  <p class="quote-text">"The Burnt Barrel is a great place to hang with friends, meet new friends, grab great libations, hit up some great food truck grub, and take in live music."</p>
+  <p class="quote-attr">— indieonthemove.com</p>
+</div>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="visit-info">
+    <h2>Come Find Us in Youngsville</h2>
+    <div class="info-block">
+      <div class="info-block-label">Address</div>
+      <div class="info-block-value">
+        135 W Main St<br>
+        Youngsville, NC 27596
+      </div>
+    </div>
+    <div class="info-block">
+      <div class="info-block-label">Phone</div>
+      <div class="info-block-value">
+        <a href="tel:9195566878">(919) 556-6878</a>
+      </div>
+    </div>
+    <div class="info-block">
+      <div class="info-block-label">Hours</div>
+      <div class="info-block-value">
+        <div class="hours-grid">
+          <span class="hours-day">Wednesday</span><span class="hours-time">12pm – 9pm</span>
+          <span class="hours-day">Thursday</span><span class="hours-time">12pm – 11pm</span>
+          <span class="hours-day">Friday</span><span class="hours-time">12pm – 11pm</span>
+          <span class="hours-day">Saturday</span><span class="hours-time">12pm – 11pm</span>
+          <span class="hours-day">Sunday</span><span class="hours-time">12pm – 6pm</span>
+          <span class="hours-day">Monday</span><span class="hours-time">12pm – 9pm</span>
+          <span class="hours-day">Tuesday</span><span class="hours-time">12pm – 9pm</span>
+        </div>
+      </div>
+    </div>
+    <div class="info-block">
+      <div class="info-block-label">Follow Along</div>
+      <div class="info-block-value">
+        <a href="https://www.instagram.com/burntbarrelnc/" target="_blank">@burntbarrelnc on Instagram</a>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="map-box">
+      <a href="https://maps.google.com/?q=135+W+Main+St,+Youngsville,+NC+27596" target="_blank" class="map-link-box">
+        <div class="map-static">
+          <div class="map-pin">📍</div>
+          <div class="map-directions">Get Directions</div>
+          <div class="map-grid-bg"></div>
+        </div>
+        <div class="map-overlay">
+          <div class="map-name">Burnt Barrel</div>
+          <div class="map-addr">135 W Main St, Youngsville, NC 27596</div>
+          <div class="map-cta">Open in Google Maps →</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Burnt Barrel</div>
+  <div class="footer-tagline">Maker of Good Times · Youngsville, NC</div>
+  <ul class="footer-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#drinks">Drinks</a></li>
+    <li><a href="#visit">Visit</a></li>
+    <li><a href="https://www.instagram.com/burntbarrelnc/" target="_blank">Instagram</a></li>
+    <li><a href="https://www.facebook.com/burntbarrelnc/" target="_blank">Facebook</a></li>
+  </ul>
+  <div class="footer-social">
+    <a href="https://www.instagram.com/burntbarrelnc/" target="_blank" class="social-link" title="Instagram">📸</a>
+    <a href="https://www.facebook.com/burntbarrelnc/" target="_blank" class="social-link" title="Facebook">📘</a>
+    <a href="tel:9195566878" class="social-link" title="Call">📞</a>
+  </div>
+  <p class="footer-copy">© 2026 Burnt Barrel · 135 W Main St, Youngsville, NC · (919) 556-6878</p>
+</footer>
+
+<script>
+  // Generate ember particles
+  const emberContainer = document.getElementById('embers');
+  const count = 22;
+  for (let i = 0; i < count; i++) {
+    const e = document.createElement('div');
+    e.className = 'ember';
+    const left = Math.random() * 100;
+    const delay = Math.random() * 12;
+    const duration = 6 + Math.random() * 10;
+    const drift = (Math.random() - 0.5) * 120;
+    const size = 2 + Math.random() * 3;
+    e.style.cssText = `
+      left: ${left}%;
+      animation-delay: -${delay}s;
+      animation-duration: ${duration}s;
+      --drift: ${drift}px;
+      width: ${size}px;
+      height: ${size}px;
+      opacity: ${0.4 + Math.random() * 0.6};
+    `;
+    emberContainer.appendChild(e);
+  }
+
+  // Smooth nav background on scroll
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      nav.style.background = 'rgba(13,10,6,0.97)';
+    } else {
+      nav.style.background = 'linear-gradient(to bottom, rgba(26,17,8,0.95), transparent)';
+    }
+  });
+</script>
+</body>
+</html>
