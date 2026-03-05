@@ -585,12 +585,9 @@
   /* ---- VISIT / MAP ---- */
   .visit {
     padding: 4.5rem 3rem;
-    max-width: 1100px;
+    max-width: 700px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: start;
+    text-align: center;
   }
 
   .visit-info h2 {
@@ -602,7 +599,7 @@
   }
 
   .info-block {
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
   }
 
   .info-block-label {
@@ -626,9 +623,10 @@
   }
 
   .hours-grid {
-    display: grid;
-    grid-template-columns: auto 1fr;
+    display: inline-grid;
+    grid-template-columns: auto auto;
     gap: 0.3rem 1.5rem;
+    text-align: left;
   }
 
   .hours-day {
@@ -821,11 +819,6 @@
     .feature-item { border-right: none; border-bottom: 1px solid rgba(138,122,104,0.2); }
     .feature-item:last-child { border-bottom: none; }
     .drinks-grid { grid-template-columns: 1fr 1fr; }
-    .visit { grid-template-columns: 1fr; gap: 3rem; }
-    .visit-info { text-align: center; }
-    .visit-info .hours-grid { justify-content: center; display: inline-grid; text-align: left; }
-    .info-block-label { text-align: center; }
-    .stat-grid { justify-items: center; }
     nav { padding: 1.2rem 1.5rem; }
     .nav-links { gap: 1.5rem; }
     .about, .events, .drinks-inner, .visit { padding: 3rem 1.5rem; }
@@ -1074,9 +1067,7 @@
         <a href="https://www.instagram.com/burntbarrelnc/" target="_blank">@burntbarrelnc on Instagram</a>
       </div>
     </div>
-  </div>
-  <div>
-    <div class="map-box">
+    <div class="map-box" style="margin-top: 2rem;">
       <a href="https://maps.google.com/?q=135+W+Main+St,+Youngsville,+NC+27596" target="_blank" class="map-link-box">
         <div class="map-static">
           <div class="map-pin">📍</div>
